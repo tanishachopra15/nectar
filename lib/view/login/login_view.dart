@@ -66,9 +66,9 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 40,
-                    ),
+                    // const SizedBox(
+                    //   height: 40,
+                    // ),
                     Center(
                       child: Text(
                         'Or connect with social media',
