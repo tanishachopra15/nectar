@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar/core/app_locator.dart';
+import 'package:nectar/core/app_router.dart';
 import 'package:nectar/core/app_router.gr.dart';
 import 'package:nectar/widget/button/primary_button.dart';
 
@@ -28,10 +30,14 @@ class OnboardingView extends StatelessWidget {
                 style: TextStyle(color: Color(0xffFFFFFF), fontSize: 48),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 19,),
-              const Text(
+              const SizedBox(
+                height: 19,
+              ),
+              Text(
                 'Get your groceries in as fast as one hour',
-                style: TextStyle(color: Color(0xffD9D9D9), fontSize: 16),
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      color: const Color(0xffD9D9D9),
+                    ),
               ),
               const SizedBox(
                 height: 40,
@@ -39,33 +45,12 @@ class OnboardingView extends StatelessWidget {
               PrimaryButton.primary(
                 title: 'Get Started',
                 onPressed: () {
-                  context.router.push(
+                  locator<AppRouter>().push(
                     const LoginRoute(),
                   );
                 },
-                color: const Color(0xff53B175),
+                color: Theme.of(context).primaryColor,
               ),
-              // ElevatedButton(
-              //   style: const ButtonStyle(
-              //     padding: WidgetStatePropertyAll(
-              //       EdgeInsets.fromLTRB(100, 20, 100, 20),
-              //     ),
-              //     backgroundColor: WidgetStatePropertyAll(
-              //       Color(0xff53B175),
-              //     ),
-              //   ),
-              //   onPressed: () {
-              //     context.router.push(
-              //       const LoginRoute(),
-              //     );
-              //   },
-              //   child: const Text(
-              //     'Get Started',
-              //     style: TextStyle(
-              //       color: Color(0xffFFF9FF),
-              //     ),
-              //   ),
-              // )
             ],
           ),
         ),

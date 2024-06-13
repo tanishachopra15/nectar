@@ -42,6 +42,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   country_picker: ^2.0.26
   flutter_svg: ^2.0.10+1
+  flutter_typeahead: ^5.2.0
   
 flutter_icons:
   android: "launcher_icon"

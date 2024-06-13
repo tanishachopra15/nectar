@@ -26,42 +26,37 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: TextButton(
-        style: ButtonStyle(
-          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(19),
-          )),
-          backgroundColor: WidgetStateProperty.all(color),
-        ),
-        onPressed: onPressed,
-        child: _type == ButtonType.icon
-            ? Padding(
-                padding: const EdgeInsets.all(10),
-                child: SizedBox(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      icon!,
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      )
-                    ],
-                  ),
-                ),
-              )
-            : Padding(
-                padding: const EdgeInsets.fromLTRB(80, 10, 80, 10),
+    return Material(
+      color: color,
+      borderRadius: BorderRadius.circular(19),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(19),
+        onTap: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: _type == ButtonType.icon
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    icon!,
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    Opacity(
+                      opacity: 0,
+                      child: icon!,
+                    )
+                  ],
+                )
+              : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 75),
                 child: Text(
                   title,
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),
+        ),
       ),
     );
   }
