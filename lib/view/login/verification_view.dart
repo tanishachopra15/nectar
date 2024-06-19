@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:nectar/core/app_locator.dart';
 import 'package:nectar/core/app_router.dart';
 import 'package:nectar/core/viewmodel/login_view_model.dart';
+import 'package:nectar/widget/textfeild/primary_text_feild.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
 class VerificationView extends StatelessWidget {
-  const VerificationView({super.key});
+  VerificationView({super.key});
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     final model = context.watch<LoginViewModel>();
     return Scaffold(
       appBar: AppBar(
@@ -47,23 +48,13 @@ class VerificationView extends StatelessWidget {
               height: 12,
             ),
             Form(
-               key: formKey,
-              child: TextFormField(
-               
-                maxLength: 4,
+              key: formKey,
+              child: PrimaryTextFeild(
+                onChanged: model.setOtp,
+                maxLength: 6,
                 keyboardType: TextInputType.phone,
-                textAlignVertical: TextAlignVertical.center,
-                cursorColor: const Color(0xff7C7C7C),
-                // autofocus: true,
+                autofocus: true,
                 validator: model.validateVerification,
-                decoration: const InputDecoration(
-                  hintText: '- - - - ',
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xffE2E2E2),
-                    ),
-                  ),
-                ),
               ),
             ),
           ],
@@ -84,9 +75,9 @@ class VerificationView extends StatelessWidget {
               )),
           FloatingActionButton(
             shape: const CircleBorder(),
-            onPressed: () {
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
-                model.navigateToLocation();
+                await model.verifyWithOtp();
               }
             },
             child: const Icon(

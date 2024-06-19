@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 import 'package:nectar/view/cart/cart_view.dart' as _i1;
 import 'package:nectar/view/login/location_view.dart' as _i2;
 import 'package:nectar/view/login/login_view.dart' as _i3;
@@ -30,7 +31,7 @@ abstract class $AppRouter extends _i7.RootStackRouter {
     LocationRoute.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.LocationView(),
+        child: _i2.LocationView(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -46,15 +47,17 @@ abstract class $AppRouter extends _i7.RootStackRouter {
       );
     },
     PhoneRoute.name: (routeData) {
+      final args = routeData.argsAs<PhoneRouteArgs>(
+          orElse: () => const PhoneRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.PhoneView(),
+        child: _i5.PhoneView(key: args.key),
       );
     },
     VerificationRoute.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.VerificationView(),
+        child:  _i6.VerificationView(),
       );
     },
   };
@@ -118,16 +121,31 @@ class OnboardingRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.PhoneView]
-class PhoneRoute extends _i7.PageRouteInfo<void> {
-  const PhoneRoute({List<_i7.PageRouteInfo>? children})
-      : super(
+class PhoneRoute extends _i7.PageRouteInfo<PhoneRouteArgs> {
+  PhoneRoute({
+    _i8.Key? key,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
           PhoneRoute.name,
+          args: PhoneRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'PhoneRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i7.PageInfo<PhoneRouteArgs> page =
+      _i7.PageInfo<PhoneRouteArgs>(name);
+}
+
+class PhoneRouteArgs {
+  const PhoneRouteArgs({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return 'PhoneRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
