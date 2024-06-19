@@ -5,6 +5,7 @@ import 'package:nectar/core/app_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
     url: 'https://rirjfepqqrafebdehefw.supabase.co',
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcmpmZXBxcXJhZmViZGVoZWZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzMDAxMTgsImV4cCI6MjAyOTg3NjExOH0.exJTQEsTAjPzsBKHKtu-9P3MzMV-j-onbPHMPPBM7KM',

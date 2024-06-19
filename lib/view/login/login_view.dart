@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nectar/core/app_locator.dart';
+import 'package:nectar/core/service/auth_service.dart';
 import 'package:nectar/core/viewmodel/login_view_model.dart';
 import 'package:nectar/widget/button/primary_button.dart';
 import 'package:provider/provider.dart';
@@ -73,7 +75,9 @@ class LoginView extends StatelessWidget {
               ),
               PrimaryButton.icon(
                 title: 'Continue with Google',
-                onPressed: () {},
+                onPressed: () {
+                  locator<AuthService>().googleSignIn();
+                },
                 color: const Color(0xff5383EC),
                 icon: SvgPicture.asset('asset/icon/google_login_icon.svg'),
               ),
