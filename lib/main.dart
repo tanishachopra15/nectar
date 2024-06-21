@@ -8,7 +8,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
     url: 'https://rirjfepqqrafebdehefw.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcmpmZXBxcXJhZmViZGVoZWZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzMDAxMTgsImV4cCI6MjAyOTg3NjExOH0.exJTQEsTAjPzsBKHKtu-9P3MzMV-j-onbPHMPPBM7KM',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcmpmZXBxcXJhZmViZGVoZWZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzMDAxMTgsImV4cCI6MjAyOTg3NjExOH0.exJTQEsTAjPzsBKHKtu-9P3MzMV-j-onbPHMPPBM7KM',
   );
   setuplocator();
   runApp(const MyApp());
@@ -52,6 +53,15 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: Color(0xff828282),
             ),
+            displayLarge: TextStyle(
+              fontSize: 24,
+              fontFamily: 'Gilroy',
+              fontWeight: FontWeight.w600,
+            ),
+            displayMedium: TextStyle(
+                fontFamily: 'Gilroy-Bold',
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
         ),
         routerConfig: appRouter.config(),

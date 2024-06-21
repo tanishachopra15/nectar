@@ -81,6 +81,39 @@ class LoginViewModel extends ChangeNotifier {
     _route.push(PhoneRoute());
   }
 
+  void navigateToVerification() {
+    _route.push(VerificationRoute());
+  }
+
+  void navigateToLocation() {
+    _route.push(LocationRoute());
+  }
+
+  void navigateToProductDetails() {
+    print('navigate to product details');
+    _route.push(const ProductDetailRoute());
+  }
+
+  void navigateToExplore() {
+    print('navigate to Explore');
+    _route.push(const ExploreRoute());
+  }
+
+  void navigateToBreverages() {
+    print('navigate to breverages');
+    _route.push(const BeveragesRoute());
+  }
+
+  void navigateToSearch() {
+    print('navigate to search');
+    _route.push(const SearchRoute());
+  }
+
+  void navigateToAccount() {
+    print('navigate to account');
+    _route.push(const AccountRoute());
+  }
+
   String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required';
@@ -119,13 +152,5 @@ class LoginViewModel extends ChangeNotifier {
       return 'Invalid area';
     }
     return null;
-  }
-
-  void navigateToVerification() {
-    _route.push(const VerificationRoute());
-  }
-
-  void navigateToLocation() {
-    _route.push(const LocationRoute());
   }
 }

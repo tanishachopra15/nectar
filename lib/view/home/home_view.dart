@@ -44,7 +44,10 @@ class HomeView extends StatelessWidget {
                     )
                   ],
                 ),
-                const PrimarySearchTextfiled(),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+                  child: PrimarySearchTextfiled(),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 23),
                   child: Stack(
@@ -263,9 +266,9 @@ class HomeView extends StatelessWidget {
           BottomNavigationBarItem(
             icon: IconButton(
               onPressed: () {},
-              icon: const Icon(
-                Icons.store,
-                color: Color(0xff181725),
+              icon: SvgPicture.asset(
+                'asset/icon/home_shop_icon.svg',
+                color: const Color(0xff181725),
               ),
             ),
             label: 'Shop',
@@ -274,18 +277,18 @@ class HomeView extends StatelessWidget {
           BottomNavigationBarItem(
               icon: IconButton(
                 onPressed: model.navigateToExplore,
-                icon: const Icon(
-                  Icons.manage_search,
-                  color: Color(0xff181725),
+                icon: SvgPicture.asset(
+                  'asset/icon/home_explore_icon.svg',
+                  color: const Color(0xff181725),
                 ),
               ),
               label: 'Explore'),
           BottomNavigationBarItem(
               icon: IconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Color(0xff181725),
+                icon: SvgPicture.asset(
+                  'asset/icon/home_cart_icon.svg',
+                  color: const Color(0xff181725),
                 ),
               ),
               label: 'Cart'),
@@ -300,10 +303,10 @@ class HomeView extends StatelessWidget {
               label: 'Favorite'),
           BottomNavigationBarItem(
               icon: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.account_circle_outlined,
-                  color: Color(0xff181725),
+                onPressed: model.navigateToAccount,
+                icon: SvgPicture.asset(
+                  'asset/icon/home_account_icon.svg',
+                  color: const Color(0xff181725),
                 ),
               ),
               label: 'Account')

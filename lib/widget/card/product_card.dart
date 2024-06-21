@@ -34,6 +34,7 @@ class ProductCard extends StatelessWidget {
               model.navigateToProductDetails();
             },
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

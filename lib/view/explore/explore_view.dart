@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar/core/viewmodel/login_view_model.dart';
 import 'package:nectar/widget/textfield/primary_search_textfiled.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class ExploreView extends StatelessWidget {
@@ -8,6 +10,7 @@ class ExploreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<LoginViewModel>();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -16,47 +19,58 @@ class ExploreView extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Align(
+            Align(
               alignment: Alignment.center,
               child: Text(
                 'Find Products',
-                style: TextStyle(
-                    fontFamily: 'Gilroy-Bold',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ),
-            const PrimarySearchTextfiled(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              child: PrimarySearchTextfiled(
+                onTap: model.navigateToSearch,
+              ),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: GridView.builder(
                   shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 14,
-                    mainAxisSpacing: 14,
-                  ),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      crossAxisSpacing: 14,
+                      mainAxisSpacing: 14,
+                      childAspectRatio: 0.69,
+                      maxCrossAxisExtent: 174),
                   itemCount: 16,
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.green),
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      height: 190,
-                      width: 175,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'asset/images/explore_veg_image.png',
-                            width: 111,
-                            height: 74,
-                          ),
-                          const SizedBox(height: 10,),
-                          Text('Frash Fruits\n& Vegetable',style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontFamily: 'Gilroy-Bold'),)
-                        ],
+                    return GestureDetector(
+                      onTap: model.navigateToBreverages,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'asset/images/explore_veg_image.png',
+                              width: 111,
+                              height: 74,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Frash Fruits\n& Vegetable',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .copyWith(fontFamily: 'Gilroy-Bold'),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },

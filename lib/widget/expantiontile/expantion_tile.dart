@@ -5,7 +5,6 @@ class PrimaryExpantionTile extends StatefulWidget {
   final String title;
   final String content;
   final String? imageUrl;
-
   const PrimaryExpantionTile({
     super.key,
     required this.title,

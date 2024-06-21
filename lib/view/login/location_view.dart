@@ -4,8 +4,8 @@ import 'package:nectar/core/app_locator.dart';
 import 'package:nectar/core/app_router.dart';
 import 'package:nectar/core/viewmodel/login_view_model.dart';
 import 'package:nectar/widget/button/primary_button.dart';
-import 'package:nectar/widget/textfeild/primary_text_feild.dart';
-import 'package:nectar/widget/textfeild/primary_type_ahead_feild.dart';
+import 'package:nectar/widget/textfield/primary_text_field.dart';
+import 'package:nectar/widget/textfield/primary_type_ahead_field.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
