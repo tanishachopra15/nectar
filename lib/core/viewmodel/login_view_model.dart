@@ -89,30 +89,30 @@ class LoginViewModel extends ChangeNotifier {
     _route.push(LocationRoute());
   }
 
-  void navigateToProductDetails() {
-    print('navigate to product details');
-    _route.push(const ProductDetailRoute());
-  }
+  // void navigateToProductDetails() {
+  //   print('navigate to product details');
+  //   _route.push(const ProductDetailRoute());
+  // }
 
-  void navigateToExplore() {
-    print('navigate to Explore');
-    _route.push(const ExploreRoute());
-  }
+  // void navigateToExplore() {
+  //   print('navigate to Explore');
+  //   _route.push(const ExploreRoute());
+  // }
 
-  void navigateToBreverages() {
-    print('navigate to breverages');
-    _route.push(const BeveragesRoute());
-  }
+  // void navigateToBreverages() {
+  //   print('navigate to breverages');
+  //   _route.push(const BeveragesRoute());
+  // }
 
-  void navigateToSearch() {
-    print('navigate to search');
-    _route.push(const SearchRoute());
-  }
+  // void navigateToSearch() {
+  //   print('navigate to search');
+  //   _route.push(const SearchRoute());
+  // }
 
-  void navigateToAccount() {
-    print('navigate to account');
-    _route.push(const AccountRoute());
-  }
+  // void navigateToAccount() {
+  //   print('navigate to account');
+  //   _route.push(const AccountRoute());
+  // }
 
   String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {

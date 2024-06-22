@@ -9,6 +9,7 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String title;
   Widget? icon;
+  TextStyle? style;
 
   PrimaryButton.primary(
       {super.key,
@@ -21,7 +22,8 @@ class PrimaryButton extends StatelessWidget {
       required this.title,
       required this.onPressed,
       required this.color,
-      this.icon})
+      this.icon,
+      this.style})
       : _type = ButtonType.icon;
 
   @override
@@ -41,7 +43,7 @@ class PrimaryButton extends StatelessWidget {
                     icon!,
                     Text(
                       title,
-                      style: Theme.of(context).textTheme.labelMedium,
+                      style: style,
                     ),
                     Opacity(
                       opacity: 0,
@@ -50,12 +52,12 @@ class PrimaryButton extends StatelessWidget {
                   ],
                 )
               : Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 70),
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.labelMedium,
+                  padding: const EdgeInsets.symmetric(horizontal: 70),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
                 ),
-              ),
         ),
       ),
     );

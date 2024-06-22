@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar/core/viewmodel/login_view_model.dart';
+import 'package:nectar/view/home/home_view_model.dart';
 import 'package:nectar/widget/textfield/primary_search_textfiled.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +10,7 @@ class ExploreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<LoginViewModel>();
+    final model = context.watch<HomeViewModel>();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nectar/core/app_locator.dart';
 import 'package:nectar/core/app_router.dart';
+import 'package:nectar/view/home/home_view_model.dart';
 import 'package:nectar/widget/card/breverage_card.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class BeveragesView extends StatelessWidget {
@@ -11,6 +13,7 @@ class BeveragesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<HomeViewModel>();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -52,7 +55,8 @@ class BeveragesView extends StatelessWidget {
                       maxCrossAxisExtent: 173),
                   itemCount: 16,
                   itemBuilder: (context, index) {
-                    return const BreverageCard(
+                    return BreverageCard(
+                        onTap: model.navigateToProductDetails,
                         image: 'asset/images/breverage_coke_image.png',
                         productname: 'Diet Coke',
                         description: '355ml,Price',

@@ -85,7 +85,7 @@ class ProductDetailView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Naturel Red Apple',
+                        Text('Natural Red Apple',
                             style: Theme.of(context).textTheme.displayLarge),
                         IconButton(
                           onPressed: () {},

@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nectar/view/home/home_view_model.dart';
 import 'package:nectar/widget/button/primary_button.dart';
-
 import 'package:nectar/widget/card/breverage_card.dart';
 import 'package:nectar/widget/checkbox/primary_check_box.dart';
 import 'package:nectar/widget/textfield/primary_search_textfiled.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class SearchView extends StatelessWidget {
@@ -13,6 +14,7 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<HomeViewModel>();
     List<String> catrgories = [
       'Eggs',
       'Noodles & Pasta',
@@ -124,7 +126,8 @@ class SearchView extends StatelessWidget {
                   // padding: const EdgeInsets.symmetric(horizontal: 25),
                   itemCount: 16,
                   itemBuilder: (context, index) {
-                    return const BreverageCard(
+                    return  BreverageCard(
+                      onTap: model.navigateToProductDetails,
                         image: 'asset/images/breverage_coke_image.png',
                         productname: 'Diet Coke',
                         description: '355ml,Price',
