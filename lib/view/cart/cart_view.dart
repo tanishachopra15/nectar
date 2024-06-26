@@ -1,7 +1,8 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar/core/viewmodel/cart_view_model.dart';
-import 'package:nectar/view/cart/cart_body.dart';
+import 'package:nectar/widget/button/primary_button.dart';
+import 'package:nectar/widget/card/cart_card.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
@@ -11,43 +12,36 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<CartViewModel>();
-    // return ChangeNotifierProvider(
-    //     create: (context) => CartViewModel(),
-    //     builder: (context, child) {
-    //       final model = context.watch<CartViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart view'),
+        centerTitle: true,
+        title: const Text('My Cart'),
       ),
-      body: const CartBody(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Stack(
-                children: [
-                  const Icon(Icons.shopping_cart),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white70,
-                          borderRadius: BorderRadius.circular(10)),
-                      width: 15,
-                      height: 15,
-                      alignment: Alignment.center,
-                      child: Text(
-                        model.items.length.toString(),
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              label: 'cart'),
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: 'cart'),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            child: ListView.separated(
+              separatorBuilder: (context, index) {
+                return const Divider();
+              },
+              itemCount: model.cart.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    CartCard(index: index, product: model.cart[index])
+                  ],
+                );
+              },
+            ),
+          ),
+          PrimaryButton.primary(
+              title: 'Go to Checkout',
+              onPressed: () {},
+              color: Theme.of(context).primaryColor),
+          const SizedBox(
+            height: 30,
+          )
         ],
       ),
     );

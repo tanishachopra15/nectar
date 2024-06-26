@@ -20,7 +20,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: ProductDetailRoute.page),
         AutoRoute(page: ExploreRoute.page),
-        AutoRoute(page: BeveragesRoute.page),
+        AutoRoute(page: ProductGridRoute.page),
         AutoRoute(page: SearchRoute.page),
         AutoRoute(page: AccountRoute.page),
         AutoRoute(page: AppScaffold.page, initial: true, children: [

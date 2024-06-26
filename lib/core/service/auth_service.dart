@@ -4,23 +4,39 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
+  final user = supabase.auth.currentUser;
+
   Future<void> signInWithOtp(String phoneNumber) async {
     log('sign in with otp');
     log(phoneNumber);
 
-    await supabase.auth.signInWithOtp(
-      phone: phoneNumber,
+    await supabase.auth.signInWithPassword(
+      email: "tanishac768@gmail.com",
+      password: '1504'
     );
   }
 
   Future<void> verifyWithOtp(String otp, String phoneNumber) async {
     print('verify with otp');
+    log(otp);
+    log(phoneNumber);
 
     await supabase.auth.verifyOTP(
-      type: OtpType.signup,
+      type: OtpType.sms,
       token: otp,
       phone: phoneNumber,
     );
+  }
+
+  Future<void> signOut() async {
+    await supabase.auth.signOut();
+  }
+
+  Future<void> addLocation(String zone, String area) async {
+    await supabase
+        .from('users')
+        .update({'zone': zone, 'area': area, 'updated_at': DateTime.now()}).eq(
+            'id', user!.id);
   }
 
   // Future<AuthResponse?> googleSignIn() async {
@@ -38,7 +54,6 @@ class AuthService {
   //   //   "https://www.googleapis.com/auth/contacts.readonly"
   //   // ]
   //   );
-
 
   //   try {
   //     final googleUser = await googleSignIn.signIn();

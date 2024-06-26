@@ -1,23 +1,13 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:nectar/core/model/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  final String image;
-  final String productname;
-  final String description;
-  final String price;
+  final ProductModel product;
   final VoidCallback onTap;
-  const ProductCard(
-      {super.key,
-      required this.image,
-      required this.productname,
-      required this.description,
-      required this.price,
-      required this.onTap});
+  const ProductCard({super.key, required this.onTap, required this.product});
 
   @override
   Widget build(BuildContext context) {
-    log("This is the image ${image}");
     return Material(
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(15),
@@ -39,20 +29,21 @@ class ProductCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Align(
-                  alignment: Alignment.center,
-                  child: Image.network(image, height: 70)),
+                alignment: Alignment.center,
+                child: Image.network(product.images.first, height: 70),
+              ),
               const SizedBox(
                 height: 25,
               ),
               Text(
-                productname,
+                product.name,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
                 height: 5,
               ),
               Text(
-                description,
+                product.description,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               const SizedBox(
@@ -65,7 +56,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      price,
+                      '\$${product.price.toString()}',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const Expanded(child: SizedBox()),

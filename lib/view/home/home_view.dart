@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nectar/view/home/home_view_model.dart';
+import 'package:nectar/widget/card/category_card.dart';
 import 'package:nectar/widget/card/product_card.dart';
 import 'package:nectar/widget/textfield/primary_search_textfiled.dart';
 import 'package:provider/provider.dart';
@@ -120,12 +121,11 @@ class HomeView extends StatelessWidget {
                         itemCount: model.products.length,
                         itemBuilder: (context, index) {
                           return ProductCard(
-                            onTap: model.navigateToProductDetails,
-                            image: model.products[index].images[0],
-                            productname: model.products[index].name,
-                            description: model.products[index].description,
-                            price:
-                                '\$${model.products[index].price}',
+                            onTap: () {
+                              model.navigateToProductDetails(
+                                  model.products[index]);
+                            },
+                            product: model.products[index],
                           );
                         },
                       ),
@@ -173,12 +173,11 @@ class HomeView extends StatelessWidget {
                         itemCount: model.products.length,
                         itemBuilder: (context, index) {
                           return ProductCard(
-                            image: model.products[index].images[0],
-                            productname: model.products[index].name,
-                            description: model.products[index].description,
-                            price:
-                                '\$${model.products[index].price}',
-                            onTap: model.navigateToProductDetails,
+                            product: model.products[index],
+                            onTap: () {
+                              model.navigateToProductDetails(
+                                  model.products[index]);
+                            },
                           );
                         },
                       ),
@@ -224,33 +223,15 @@ class HomeView extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 25),
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: model.categories.length,
                         itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                                color:
-                                    Colors.primaries[index].withOpacity(0.18),
-                                borderRadius: BorderRadius.circular(18)),
-                            alignment: Alignment.center,
-                            width: 250,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(
-                                    'asset/images/home_pulses_image.png'),
-                                const Text(
-                                  'Pulses',
-                                  style: TextStyle(
-                                      fontFamily: 'Gilroy',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xff3E423F)),
-                                ),
-                                const SizedBox(
-                                  width: 14,
-                                )
-                              ],
-                            ),
+                          return CategoryCard(
+                            index: index,
+                            category: model.categories[index],
+                            onTap: () {
+                              model.navigateToBreverages(
+                                  model.categories[index]);
+                            },
                           );
                         },
                       ),
@@ -271,12 +252,11 @@ class HomeView extends StatelessWidget {
                         itemCount: model.products.length,
                         itemBuilder: (context, index) {
                           return ProductCard(
-                            image: model.products[index].images[0],
-                            productname: model.products[index].name,
-                            description: model.products[index].description,
-                            price:
-                                '\$${model.products[index].price}',
-                            onTap: model.navigateToProductDetails,
+                            product: model.products[index],
+                            onTap: () {
+                              model.navigateToProductDetails(
+                                  model.products[index]);
+                            },
                           );
                         },
                       ),

@@ -1,10 +1,9 @@
 import 'dart:developer';
-
 import 'package:nectar/core/model/product_model.dart';
 import 'package:nectar/core/supabase.dart';
 
 class ProductService {
-  Future<List<ProductModel>> getproducts() async {
+  Future<List<ProductModel>> getProducts() async {
     print('get products function');
     final data =
         await supabase.from('product').select('*,brand(*),category(*)');

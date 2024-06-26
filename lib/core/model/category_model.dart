@@ -36,10 +36,10 @@ class CategoryModel {
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
-      id: map['id'],
-      name: map['name'],
-      created_at: DateTime.parse(map['created_at']),
-      image: map['image'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? '',
+      created_at: DateTime.now(),
+      image: map['image'] ?? '',
     );
   }
 

@@ -1,38 +1,52 @@
 import 'dart:collection';
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:nectar/core/app_locator.dart';
 import 'package:nectar/core/model/item.dart';
+import 'package:nectar/core/model/product_model.dart';
+import 'package:nectar/core/service/cart_service.dart';
 
 class CartViewModel extends ChangeNotifier {
-  /// Internal, private state of the cart.
   final List<Item> _items = [];
 
-  /// An unmodifiable view of the items in the cart.
   UnmodifiableListView<Item> get items => UnmodifiableListView(_items);
 
-  /// The current total price of all items (assuming all items cost $42).
   int get totalPrice => _items.length * 42;
 
-  /// Adds [item] to cart. This and [removeAll] are the only ways to modify the
-  /// cart from the outside.
   void add(Item item) {
     _items.add(item);
-    // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
 
-  /// Removes all items from the cart.
   void removeAll() {
     _items.clear();
-    // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
 
   void removeItem(Item item) {
     _items.remove(item);
-    // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
-  
+
+  List<ProductModel> _cart = [];
+  List<ProductModel> get cart => _cart;
+
+  final cartLocator = locator<CartService>();
+
+  FavoriteViewModel() {
+    // addFavoriteProduct();
+    getFavoriteProduct();
+  }
+
+  Future<void> addFavoriteProduct(ProductModel product) async {
+    _cart = await cartLocator.addToCart(product);
+    notifyListeners();
+  }
+
+  Future<void> getFavoriteProduct() async {
+    print('hello');
+    _cart = await cartLocator.getCart();
+    log('_favorites ${_cart}');
+    notifyListeners();
+  }
 }
-
-

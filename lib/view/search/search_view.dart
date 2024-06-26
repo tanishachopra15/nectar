@@ -127,7 +127,10 @@ class SearchView extends StatelessWidget {
                   itemCount: 16,
                   itemBuilder: (context, index) {
                     return  BreverageCard(
-                      onTap: model.navigateToProductDetails,
+                      onTap: () {
+                              model.navigateToProductDetails(
+                                  model.products[index]);
+                            },
                         image: 'asset/images/breverage_coke_image.png',
                         productname: 'Diet Coke',
                         description: '355ml,Price',

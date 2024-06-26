@@ -31,9 +31,9 @@ class BrandModel {
 
   factory BrandModel.fromMap(Map<String, dynamic> map) {
     return BrandModel(
-      id: map['id'],
-      name: map['name'],
-      created_at: DateTime.parse(map['created_at']),
+      id: map['id'] ?? 0,
+      name: map['name'] ?? '',
+      created_at: DateTime.now(),
     );
   }
 
